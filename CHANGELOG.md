@@ -1,10 +1,28 @@
 # Change Log
+## 0.9.5 (Jul 30th 2024)
+- enhancement - Added support for vulnerability analysis for Gradle build manifests.
+- enhancement - Added support for vulnerability analysis on images in Dockerfiles.
+- enhancement - Added new settings for the Python and Go ecosystems.
+- enhancement - Added support for private GitHub Registries.
+- fixes - Fixed an issue by removing a redundant `/` at the beginning of Windows URI paths that was causing some `mvn` commands to fail. See [PR#692](https://github.com/fabric8-analytics/fabric8-analytics-vscode-extension/pull/692) for details.
+- fixes - Fixed an issue with the Stack Analysis running on an open file, instead of running on an opened manifest file. See [PR#692](https://github.com/fabric8-analytics/fabric8-analytics-vscode-extension/pull/692) for details.
+- known issue - You can get an error by using the `Use Pip Dep Tree` and `Use Python Virtual Environment` options simultaneously. See the [Known Issues section](README.md#known-issues) of the README for more information.
+- known issue - Red Hat Dependency Analytics has limitations for Maven and Gradle. See the [Known Issues section](README.md#known-issues) of the README for more information.
+- informational - Added a telemetry event to track Red Hat's recommended version acceptance.
+## 0.9.4 (Mar 25th 2024)
+- informational - Removing access to Snyk's Vulnerability Database.
+## 0.9.3 (Mar 6th 2024)
+- enhancement - Red Hat Dependency Analytics reporting has integrated the ONGuard service by using [Open Source Vulnerability (OSV)](https://google.github.io/osv.dev/) and the [National Vulnerability Database (NVD)](https://nvd.nist.gov/) data sources for additional vulnerability information.
+- enhancement - Integrated VS Code's [Secret Storage](https://code.visualstudio.com/api/references/vscode-api#SecretStorage) feature for securing the Snyk token. See [PR#689](https://github.com/fabric8-analytics/fabric8-analytics-vscode-extension/pull/689) for details.
+- fixes - Fixed an issue with displaying wrong data when triggering the event handler for Component Analysis on a unsaved manifest file. Component Analysis is no longer triggered on unsaved manifest files. See [PR#239](https://github.com/fabric8-analytics/fabric8-analytics-lsp-server/pull/239) for details.
+- fixes - Fixed an issue where the diagnostic source name is being obscured in the View Problem panel from an inline analysis. See [PR#239](https://github.com/fabric8-analytics/fabric8-analytics-lsp-server/pull/239) for details.
+- informational - The naming convention for VS Code commands has changed from `fabric8` to `rhda`. For example, `fabric8.stackAnalysis` is now `rhda.stackAnalysis`.
 ## 0.9.2 (Feb 5th 2024)
 - informational - The `redHatDependencyAnalyticsReportFilePath` setting name has changed to `reportFilePath`. If you had a custom file path set for `redHatDependencyAnalyticsReportFilePath`, then you need to add your custom file path to the `reportFilePath` setting.
 - enhancement - Added a vulnerability severity alert level setting for the user to receive inline notifications for just errors or warnings. See [PR#674](https://github.com/fabric8-analytics/fabric8-analytics-vscode-extension/pull/674) for details.
 - fixes - Fixed an issue with the `codeActionsMap` call. When multiple manifest documents are open that have the same dependency, one of the document entries gets deleted. This gave a wrong result in the analysis. See [PR#236](https://github.com/fabric8-analytics/fabric8-analytics-lsp-server/pull/236) for details.
 - fixes - Fixed an issue in the Exhort Javascript API. This fix enables and supports analysis of `pom.xml` manifests that include local modules, and a parent Project Object Model (POM). See the [PR#237](https://github.com/fabric8-analytics/fabric8-analytics-lsp-server/pull/237) for details.
-- fixes - Fixed an issue with the analysis report not displaying because of spaces in the manifest file path. See [PR#100](https://github.com/RHEcosystemAppEng/exhort-javascript-api/pull/100) for details.
+- fixes - Fixed an issue with the analysis report not displaying because of spaces in the manifest file path. See [PR#100](https://github.com/trustification/exhort-javascript-api/pull/100) for details.
 ## 0.9.1 (Dec 24th 2023)
 - fixes - Resolved endpoint configuration issue by removing EXHORT_DEV_MODE environment configuration parameter. See [PR#672](https://github.com/fabric8-analytics/fabric8-analytics-vscode-extension/pull/672) for details.
 ## 0.9.0 (Dec 21th 2023)
@@ -13,13 +31,13 @@
 - enhancement - Added support for error observation by using Sentry.
 - enhancement - Support for more complex SPDX SBOM relationships.
 - enhancement - Added recommendations and remediations in the _Quick Fix..._ tab.
-- fixes - Fixed an issue where unique Snyk vulnerability information was not being displayed in the Dependency Analytics report. See [PR#217](https://github.com/RHEcosystemAppEng/exhort/pull/217) for details.
-- fixes - Better valid and invalid token alert messages for the Snyk vulnerability information provider. See [PR#218](https://github.com/RHEcosystemAppEng/exhort/pull/218) for details.
-- fixes - Fixed analysis report discrepancies between Red Hat Dependency Analytics and Snyk’s analytics. See [PR#219](https://github.com/RHEcosystemAppEng/exhort/pull/219) for details.
+- fixes - Fixed an issue where unique Snyk vulnerability information was not being displayed in the Dependency Analytics report. See [PR#217](https://github.com/trustification/exhort/pull/217) for details.
+- fixes - Better valid and invalid token alert messages for the Snyk vulnerability information provider. See [PR#218](https://github.com/trustification/exhort/pull/218) for details.
+- fixes - Fixed analysis report discrepancies between Red Hat Dependency Analytics and Snyk’s analytics. See [PR#219](https://github.com/trustification/exhort/pull/219) for details.
 - fixes - Fixed the Go and Python package links so they point to their specific package manager website.
 ## 0.7.3 (Nov 8th 2023)
 - enhancement - Support for Golang and Python ecosystems. See [PR#656](https://github.com/fabric8-analytics/fabric8-analytics-vscode-extension/pull/656) for details.
-- enhancement - A new setting for Python and Go environments to restrict package analysis when there is a package version mis-match between the environment and the manifest file. See the [Features section](https://github.com/fabric8-analytics/fabric8-analytics-vscode-extension/blob/master/README.md#features) of the README for more information.
+- enhancement - A new setting for Python and Go environments to restrict package analysis when there is a package version mis-match between the environment and the manifest file. See the [Features section](https://github.com/fabric8-analytics/fabric8-analytics-vscode-extension/blob/main/README.md#features) of the README for more information.
 ## 0.7.0 (Sep 11th 2023)
 - informational - Alpha release of the new Red Hat Dependency Analytics (RHDA) extension.
 - informational - Code base refactoring from CRDA to RHDA alpha. See [PR#636](https://github.com/fabric8-analytics/fabric8-analytics-vscode-extension/pull/636) for details.

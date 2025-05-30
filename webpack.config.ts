@@ -2,13 +2,11 @@
 
 'use strict';
 
-import * as webpack from 'webpack';
-
+const webpack = require('webpack');
 const path = require('path');
 const glob = require('glob');
 
 module.exports = (env, argv) => {
-
   let entry = {
     'extension': './src/extension.ts',
     'server': './node_modules/@fabric8-analytics/fabric8-analytics-lsp-server/dist/server.js',
@@ -41,14 +39,8 @@ module.exports = (env, argv) => {
       },
       {
         test: /\.ts$/,
-        exclude: /node_modules/,
         use: [{
           loader: 'ts-loader',
-          options: {
-            compilerOptions: {
-              "module": "es6" // override `tsconfig.json` so that TypeScript emits native JavaScript modules.
-            }
-          }
         }]
       }]
     },

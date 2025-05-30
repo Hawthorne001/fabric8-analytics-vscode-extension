@@ -26,6 +26,7 @@ export class DependencyReportPanel {
    * Creates or shows the webview panel.
    */
   public static createOrShowWebviewPanel() {
+    /* istanbul ignore next */
     const column = vscode.window.activeTextEditor
       ? vscode.window.activeTextEditor.viewColumn
       : undefined;
@@ -64,7 +65,6 @@ export class DependencyReportPanel {
     this._panel = panel;
 
     // Set the webview's initial html content
-    // this._update();
     this._updateWebViewPanel();
 
     // Listen for when the panel is disposed
@@ -113,6 +113,7 @@ export class DependencyReportPanel {
     DependencyReportPanel.data = null;
     while (this._disposables.length) {
       const x = this._disposables.pop();
+      /* istanbul ignore else */
       if (x) {
         x.dispose();
       }
